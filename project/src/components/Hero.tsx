@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
       <div className="hero-container">
         <div className="hero-image">
           <img 
-            src="project/src/assets/Janarthanan V K.jpg" 
+            src="../assets/Janarthanan V K.jpg" 
             alt="Janarthanan V K" 
             className="hero-main-image"
           />
