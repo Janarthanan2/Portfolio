@@ -9,8 +9,8 @@ const Hero: React.FC = () => {
       <div className="hero-container">
         <div className="hero-image">
           <img 
-            src="../../assets/Janarthanan V K.jpg" 
-            alt="Janarthanan" 
+            src="../assets/Janarthanan V K.jpg" 
+            alt="Janarthanan V K" 
             className="hero-main-image"
           />
         </div>
