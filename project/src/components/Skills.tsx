@@ -2,7 +2,9 @@ import React from 'react';
 
 const Skills: React.FC = () => {
   const skills = [
-    { name: 'Python', level: 90, category: 'Programming' },
+    { name: 'Python', level: 70, category: 'Programming' },
+    { name: 'Java Programming', level: 75, category: 'Programming' },
+    { name: 'C-Programming', level: 80, category: 'Programming' },
     { name: 'TensorFlow', level: 85, category: 'AI/ML' },
     { name: 'Keras', level: 80, category: 'AI/ML' },
     { name: 'MongoDB', level: 75, category: 'Database' },
