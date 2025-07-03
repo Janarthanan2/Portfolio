@@ -448,7 +448,7 @@ form input, form textarea {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   background: var(--card-bg);
-  background-color: #0a0a23;
+  border-color: #0000a6;
   color: var(--text-color);
   resize: vertical;
   transition: all 0.3s ease;
