@@ -25,16 +25,18 @@ const Projects: React.FC = () => {
     <section id="projects">
       <h2>Projects</h2>
       <div className="projects-grid">
-        {projects.map((project, index) => (
+        {projects.map((project, index) => {
+          const {title,description} = project;
+          return (
           <div 
             key={index} 
             className="project-card"
-            title={project.description}
+            title={description}
           >
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
+            <h3>{title}</h3>
+            <p>{description}</p>
           </div>
-        ))}
+        )})};
       </div>
     </section>
   );
