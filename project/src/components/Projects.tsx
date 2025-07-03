@@ -14,9 +14,9 @@ const Projects: React.FC = () => {
       link: 'https://github.com/yourusername/isl-translator'
     },
     {
-      title: 'YOLOv8 Detection',
+      title: 'REAL TIME OBJECT DETECTION AND ALERT SYSTEM',
       description: 'Object detection with boundary alerts.',
-      link: 'https://github.com/yourusername/yolov8-detection'
+      link: 'https://github.com/Janarthanan2/Real-Time-Object-Detection-and-Alert-System.git'
     },
     {
       title: 'Movie Recommender',
