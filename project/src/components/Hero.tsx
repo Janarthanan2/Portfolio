@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
         <div className="hero-image">
           <img 
             src="../../assets/Janarthanan V K.jpg" 
-            alt="Janarthanan V K" 
+            alt="Janarthanan" 
             className="hero-main-image"
           />
         </div>
