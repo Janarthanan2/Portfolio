@@ -1,6 +1,7 @@
 import React from 'react';
 import ParticleBackground from './ParticleBackground';
 import TypewriterText from './TypewriterText';
+import janarthananImage from '../assets/Janarthanan V K.jpg';
 
 const Hero: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Hero: React.FC = () => {
       <div className="hero-container">
         <div className="hero-image">
           <img 
-            src="/assets/Janarthanan V K.jpg" 
+            src={janarthananImage} 
             alt="Janarthanan V K" 
             className="hero-main-image"
           />
