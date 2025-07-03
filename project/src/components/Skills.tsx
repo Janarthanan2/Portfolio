@@ -12,8 +12,8 @@ const Skills: React.FC = () => {
     { name: 'scikit-learn', level: 85, category: 'AI/ML' }
   ];
 
-  const categories = ['Programming', 'AI/ML', 'Frontend', 'Backend', 'Database', 'Computer Vision'];
-  const categoryColors = {
+  const categories = ['Programming', 'AI/ML', 'Frontend', 'Backend', 'Database', 'Computer Vision'] as const;
+  const categoryColors: Record<typeof categories[number], string> = {
     'Programming': 'from-blue-500 to-blue-600',
     'AI/ML': 'from-purple-500 to-purple-600',
     'Frontend': 'from-green-500 to-green-600',
@@ -30,7 +30,8 @@ const Skills: React.FC = () => {
         {categories.map((category) => {
           const categorySkills = skills.filter(skill => skill.category === category);
           if (categorySkills.length === 0) return null;
-          
+          type Category = typeof categories[number];
+          const typedCategory = category as Category;
           return (
             <div key={category} className="skill-category">
               <h3 className="category-title">{category}</h3>
@@ -43,7 +44,7 @@ const Skills: React.FC = () => {
                     </div>
                     <div className="skill-bar">
                       <div 
-                        className={`skill-progress bg-gradient-to-r ${categoryColors[category]}`}
+                        className={`skill-progress bg-gradient-to-r ${categoryColors[typedCategory]}`}
                         style={{ width: `${skill.level}%` }}
                       ></div>
                     </div>
