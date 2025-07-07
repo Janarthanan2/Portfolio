@@ -11,7 +11,7 @@ const Projects: React.FC = () => {
     {
       title: 'ISL Translator',
       description: 'Real-time gesture detection using CNN.',
-      link: 'https://github.com/yourusername/isl-translator'
+      link: 'https://github.com/Janarthanan2/Automatic-Indian-Sign-Language-Translator-ISL.git'
     },
     {
       title: 'REAL TIME OBJECT DETECTION AND ALERT SYSTEM',
@@ -21,7 +21,7 @@ const Projects: React.FC = () => {
     {
       title: 'Movie Recommender',
       description: 'Content + collaborative filtering recommender.',
-      link: 'https://github.com/yourusername/movie-recommender'
+      link: 'https://github.com/Janarthanan2/Movie-Ticket-Booking.git'
     }
   ];
 
