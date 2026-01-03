@@ -26,7 +26,7 @@ const Education: React.FC = () => {
   ];
 
   return (
-    <section className="education">
+    <section id="education" className="education">
       <h2 className="education-heading">Education</h2>
       <div className="timeline-items">
         {educationData.map((item, index) => (
