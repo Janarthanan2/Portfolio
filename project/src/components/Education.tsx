@@ -21,7 +21,7 @@ const Education: React.FC = () => {
     {
       date: '2022–2026',
       institution: 'Saveetha Engineering College',
-      description: 'Pursuing B.Tech in Artificial Intelligence and Data Science (current CGPA: 8.53). Participated in Smart India Hackathon 2024, built projects using Python, TensorFlow & React. Member of Tech society club and technical event organizer.'
+      description: 'Pursuing B.Tech in Artificial Intelligence and Data Science (current CGPA: 8.2). Participated in Smart India Hackathon 2024, built projects using Python, TensorFlow & React. Member of Tech society club and technical event organizer.'
     }
   ];
 

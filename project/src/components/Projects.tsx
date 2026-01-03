@@ -22,6 +22,11 @@ const Projects: React.FC = () => {
       title: 'Movie Recommender',
       description: 'Content + collaborative filtering recommender.',
       link: 'https://github.com/Janarthanan2/Movie-Ticket-Booking.git'
+    },
+    {
+      title: 'AIMMS Project',
+      description: 'AI-Enhanced Money Monitoring System.',
+      link: 'https://github.com/Janarthanan2/aimms_project.git'
     }
   ];
 
@@ -32,17 +37,17 @@ const Projects: React.FC = () => {
         {projects.map((project, index) => {
           const { title, description, link } = project;
           return (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="project-card"
               title={description}
             >
               <h3>{title}</h3>
               <p>{description}</p>
-              <a 
-                href={link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="project-link"
               >
                 View Project

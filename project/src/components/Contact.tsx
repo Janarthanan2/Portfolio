@@ -52,8 +52,8 @@ const Contact: React.FC = () => {
     <section id="contact" className="relative py-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[20%] right-[10%] w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-[20%] left-[10%] w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-[20%] right-[10%] w-72 h-72 bg-green-400/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-[20%] left-[10%] w-96 h-96 bg-lime-400/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10 max-w-6xl">
@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 inline-block bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-purple-500 border-none">
+          <h2 className="text-4xl font-bold mb-4 inline-block bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-lime-500 border-none">
             Get In Touch
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto text-lg">
@@ -82,12 +82,12 @@ const Contact: React.FC = () => {
             className="hidden md:block"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-20 blur-2xl transform rotate-6 scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-lime-500 rounded-3xl opacity-30 blur-2xl transform rotate-6 scale-105" />
               <div className="relative bg-white/80 dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-2xl">
                 <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Let's Connect</h3>
                 <div className="space-y-6">
-                  <div className="flex items-center space-x-4 p-4 rounded-xl bg-blue-50 dark:bg-white/5 hover:bg-blue-100 dark:hover:bg-white/10 transition-colors">
-                    <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                  <div className="flex items-center space-x-4 p-4 rounded-xl bg-green-50 dark:bg-white/5 hover:bg-green-100 dark:hover:bg-white/10 transition-colors">
+                    <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 dark:text-green-400">
                       <Mail size={24} />
                     </div>
                     <div>
@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
                   {/* Add more contact info or social links here if available */}
                 </div>
 
-                <div className="mt-12 p-6 rounded-2xl bg-blue-50 dark:bg-white/5 border border-blue-100 dark:border-white/5">
+                <div className="mt-12 p-6 rounded-2xl bg-green-50 dark:bg-white/5 border border-green-100 dark:border-white/5">
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed italic">
                     “Choose a job you love, and you will never have to work a day in your life.”
                   </p>
@@ -198,7 +198,7 @@ const Contact: React.FC = () => {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-[var(--accent-color)] to-blue-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 hover:shadow-blue-500/40 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-[var(--accent-color)] to-green-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-green-500/30 flex items-center justify-center space-x-2 hover:shadow-green-500/50 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

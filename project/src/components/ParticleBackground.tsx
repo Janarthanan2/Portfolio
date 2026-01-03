@@ -31,7 +31,7 @@ const ParticleBackground: React.FC = () => {
     // Initialize particles
     const maxParticles = 100;
     particlesRef.current = [];
-    
+
     for (let i = 0; i < maxParticles; i++) {
       particlesRef.current.push({
         x: Math.random() * canvas.width,
@@ -44,7 +44,7 @@ const ParticleBackground: React.FC = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       particlesRef.current.forEach(particle => {
         particle.x += particle.dx;
         particle.y += particle.dy;
