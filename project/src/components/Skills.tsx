@@ -8,6 +8,7 @@ const Skills: React.FC = () => {
     { name: 'TensorFlow', level: 85, category: 'AI/ML' },
     { name: 'Keras', level: 80, category: 'AI/ML' },
     { name: 'MongoDB', level: 75, category: 'Database' },
+    { name: 'MYSQL', level: 76, category: 'Database' },
     { name: 'Spring Boot', level: 70, category: 'Backend' },
     { name: 'React', level: 85, category: 'Frontend' },
     { name: 'OpenCV', level: 80, category: 'Computer Vision' },
@@ -27,7 +28,7 @@ const Skills: React.FC = () => {
   return (
     <section id="skills" className="skills-section">
       <h2>Skills & Expertise</h2>
-      
+
       <div className="skills-container">
         {categories.map((category) => {
           const categorySkills = skills.filter(skill => skill.category === category);
@@ -45,7 +46,7 @@ const Skills: React.FC = () => {
                       <span className="skill-percentage">{skill.level}%</span>
                     </div>
                     <div className="skill-bar">
-                      <div 
+                      <div
                         className={`skill-progress bg-gradient-to-r ${categoryColors[typedCategory]}`}
                         style={{ width: `${skill.level}%` }}
                       ></div>
