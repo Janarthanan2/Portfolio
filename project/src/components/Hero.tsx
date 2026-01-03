@@ -2,9 +2,7 @@ import React from 'react';
 import ParticleBackground from './ParticleBackground';
 import TypewriterText from './TypewriterText';
 import janarthananImage from '../assets/Janarthanan.jpg';
-i
-
-
+import janarthananResume from '../assets/Janarthanan_Resume.pdf';
 
 const Hero: React.FC = () => {
   return (
@@ -12,15 +10,15 @@ const Hero: React.FC = () => {
       <ParticleBackground />
       <div className="hero-container">
         <div className="hero-image">
-          <img 
-            src={janarthananImage} 
-            alt="Janarthanan V K" 
+          <img
+            src={janarthananImage}
+            alt="Janarthanan V K"
             className="hero-main-image"
           />
         </div>
         <div className="hero-text">
-          <TypewriterText 
-            text="Hi, I'm Janarthanan V K" 
+          <TypewriterText
+            text="Hi, I'm Janarthanan V K"
             className="hero-title"
           />
           <p>AI & Data Science Enthusiast | Software Developer</p>

@@ -27,9 +27,9 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const { name, email, message } = formData;
-    
+
     if (!name.trim() || !email.trim() || !message.trim()) return;
 
     setIsSubmitting(true);
@@ -45,8 +45,8 @@ const Contact: React.FC = () => {
     setTimeout(() => setIsSuccess(false), 3000);
   };
 
-  const inputClasses = "w-full bg-white/10 border border-white/20 rounded-lg px-12 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all duration-300 backdrop-blur-sm";
-  const labelClasses = "block text-sm font-medium text-gray-300 mb-2 ml-1";
+  const inputClasses = "w-full bg-gray-50 dark:bg-white/10 border border-gray-300 dark:border-white/20 rounded-lg px-12 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all duration-300 backdrop-blur-sm";
+  const labelClasses = "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 ml-1";
 
   return (
     <section id="contact" className="relative py-20 overflow-hidden">
@@ -67,7 +67,7 @@ const Contact: React.FC = () => {
           <h2 className="text-4xl font-bold mb-4 inline-block bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-purple-500 border-none">
             Get In Touch
           </h2>
-          <p className="text-gray-300 max-w-xl mx-auto text-lg">
+          <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto text-lg">
             Have a project in mind or just want to say hi? I'd love to hear from you.
           </p>
         </motion.div>
@@ -83,26 +83,26 @@ const Contact: React.FC = () => {
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-20 blur-2xl transform rotate-6 scale-105" />
-              <div className="relative bg-[var(--card-bg)] p-8 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl">
-                <h3 className="text-2xl font-bold mb-6 text-white">Let's Connect</h3>
+              <div className="relative bg-white/80 dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-2xl">
+                <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Let's Connect</h3>
                 <div className="space-y-6">
-                  <div className="flex items-center space-x-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+                  <div className="flex items-center space-x-4 p-4 rounded-xl bg-blue-50 dark:bg-white/5 hover:bg-blue-100 dark:hover:bg-white/10 transition-colors">
                     <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
                       <Mail size={24} />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">Email Me</p>
-                      <p className="text-white font-medium">janarthanan@example.com</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Email Me</p>
+                      <p className="text-gray-900 dark:text-white font-medium">janartanan47@gmail.com</p>
                     </div>
                   </div>
                   {/* Add more contact info or social links here if available */}
                 </div>
-                
-                <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-white/5">
-                  <p className="text-gray-300 leading-relaxed italic">
-                    "The only way to do great work is to love what you do."
+
+                <div className="mt-12 p-6 rounded-2xl bg-blue-50 dark:bg-white/5 border border-blue-100 dark:border-white/5">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed italic">
+                    “Choose a job you love, and you will never have to work a day in your life.”
                   </p>
-                  <p className="text-[var(--accent-color)] mt-4 font-semibold">- Steve Jobs</p>
+                  <p className="text-[var(--accent-color)] mt-4 font-semibold">- Confucius</p>
                 </div>
               </div>
             </div>
@@ -115,15 +115,15 @@ const Contact: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <form onSubmit={handleSubmit} className="bg-[var(--card-bg)] p-8 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl space-y-6 relative overflow-hidden">
-              
+            <form onSubmit={handleSubmit} className="bg-white/80 dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-2xl space-y-6 relative overflow-hidden">
+
               <AnimatePresence>
                 {isSuccess && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="absolute inset-0 bg-[var(--card-bg)] z-50 flex flex-col items-center justify-center p-8 backdrop-blur-xl"
+                    className="absolute inset-0 bg-white/95 dark:bg-[var(--card-bg)] z-50 flex flex-col items-center justify-center p-8 backdrop-blur-xl"
                   >
                     <motion.div
                       initial={{ scale: 0 }}
@@ -133,11 +133,11 @@ const Contact: React.FC = () => {
                     >
                       <CheckCircle size={40} className="text-white" />
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                    <p className="text-gray-300 text-center">Thank you for reaching out. I'll get back to you soon.</p>
-                    <button 
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Message Sent!</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-center">Thank you for reaching out. I'll get back to you soon.</p>
+                    <button
                       onClick={() => setIsSuccess(false)}
-                      className="mt-8 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+                      className="mt-8 px-6 py-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 rounded-full text-gray-900 dark:text-white transition-colors"
                     >
                       Send another message
                     </button>
@@ -148,7 +148,7 @@ const Contact: React.FC = () => {
               <div className="space-y-1">
                 <label className={labelClasses}>Name</label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400" size={20} />
                   <input
                     type="text"
                     name="name"
@@ -164,7 +164,7 @@ const Contact: React.FC = () => {
               <div className="space-y-1">
                 <label className={labelClasses}>Email</label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                  <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400" size={20} />
                   <input
                     type="email"
                     name="email"
@@ -180,7 +180,7 @@ const Contact: React.FC = () => {
               <div className="space-y-1">
                 <label className={labelClasses}>Message</label>
                 <div className="relative">
-                  <MessageSquare className="absolute left-4 top-6 text-gray-400" size={20} />
+                  <MessageSquare className="absolute left-4 top-6 text-gray-500 dark:text-gray-400" size={20} />
                   <textarea
                     name="message"
                     value={formData.message}
