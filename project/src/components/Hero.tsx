@@ -2,7 +2,9 @@ import React from 'react';
 import ParticleBackground from './ParticleBackground';
 import TypewriterText from './TypewriterText';
 import janarthananImage from '../assets/Janarthanan.jpg';
-import janarthananResume from '../assets/Janarthanan_Resume.pdf';
+i
+
+
 
 const Hero: React.FC = () => {
   return (
