@@ -34,6 +34,7 @@ const Header: React.FC = () => {
             <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
             <li><button onClick={() => scrollToSection('projects')}>Projects</button></li>
             <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
+            <li><button onClick={() => scrollToSection('Education')}>Education</button></li>
           </ul>
         </div>
       </nav>
