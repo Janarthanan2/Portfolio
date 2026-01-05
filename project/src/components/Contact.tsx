@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mail, User, MessageSquare, CheckCircle, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 interface FormData {
   name: string;
@@ -34,15 +35,34 @@ const Contact: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Simulate network request
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    // REPLACE THESE WITH YOUR ACTUAL EMAILJS KEYS
+    const SERVICE_ID = 'service_7f9pz18';
+    const TEMPLATE_ID = 'template_z6apcp6';
+    const PUBLIC_KEY = 'dJjqtTiW6xUVDSweV';
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: name,
+          from_email: email,
+          message: message,
+        },
+        PUBLIC_KEY
+      );
 
-    // Reset success message after 3 seconds
-    setTimeout(() => setIsSuccess(false), 3000);
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
+
+      // Reset success message after 3 seconds
+      setTimeout(() => setIsSuccess(false), 3000);
+    } catch (error) {
+      console.error('FAILED...', error);
+      alert(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClasses = "w-full bg-gray-50 dark:bg-white/10 border border-gray-300 dark:border-white/20 rounded-lg px-12 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] transition-all duration-300 backdrop-blur-sm";
