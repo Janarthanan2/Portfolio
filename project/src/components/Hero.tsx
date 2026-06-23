@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
             >
               <Github size={20} />
             </a>
-            <a href="https://linkedin.com/in/janarthanan-vk" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
+            <a href="https://www.linkedin.com/in/janarthananvk-57b9b3256/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
               style={{ color: 'white', opacity: 0.8, transition: 'all 0.3s', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(10px)' }}
               onMouseEnter={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = 'rgba(255,255,255,0.25)'; }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '0.8'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; }}
