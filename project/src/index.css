@@ -169,10 +169,10 @@ body {
 }
 
 .hero-main-image {
-  width: 80%;
+  width: 50%;
   max-width: 350px;
   height: auto;
-  border-radius: 10px;
+  border-radius: 50px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
