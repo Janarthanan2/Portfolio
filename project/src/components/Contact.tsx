@@ -35,10 +35,17 @@ const Contact: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // REPLACE THESE WITH YOUR ACTUAL EMAILJS KEYS
-    const SERVICE_ID = 'service_7f9pz18';
-    const TEMPLATE_ID = 'template_z6apcp6';
-    const PUBLIC_KEY = 'dJjqtTiW6xUVDSweV';
+    // Environment variables
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      console.error('EmailJS keys are missing from environment variables');
+      alert('Email configuration is missing. Please check .env file.');
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       await emailjs.send(
