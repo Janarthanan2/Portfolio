@@ -35,10 +35,10 @@ const Contact: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Environment variables
-    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    // Environment variables with fallback values
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_7f9pz18';
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_z6apcp6';
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'dJjqtTiW6xUVDSweV';
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       console.error('EmailJS keys are missing from environment variables');
