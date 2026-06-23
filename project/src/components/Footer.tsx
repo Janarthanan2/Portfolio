@@ -15,9 +15,11 @@ const Footer: React.FC = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/Janarthanan2', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/janarthananvk-57b9b3256/', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:janartanan47@gmail.com', label: 'Email' },
+    // @ts-ignore - Brand icons are deprecated in lucide-react but still work
+    { icon: Github, href: 'https://github.com/Janarthanan2', label: 'GitHub', color: '#ffffff' },
+    // @ts-ignore - Brand icons are deprecated in lucide-react but still work
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/janarthananvk-57b9b3256/', label: 'LinkedIn', color: '#0A66C2' },
+    { icon: Mail, href: 'mailto:janartanan47@gmail.com', label: 'Email', color: '#EA4335' },
   ];
 
   return (
@@ -65,15 +67,27 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 aria-label={social.label}
                 style={{
-                  width: '40px', height: '40px', borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.1)', display: 'flex',
+                  width: '44px', height: '44px', borderRadius: '50%',
+                  background: 'rgba(255,255,255,0.15)', display: 'flex',
                   alignItems: 'center', justifyContent: 'center', color: 'white',
                   transition: 'all 0.3s', textDecoration: 'none',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent-color)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                onMouseEnter={e => { 
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.25)'; 
+                  e.currentTarget.style.transform = 'translateY(-3px)'; 
+                  e.currentTarget.style.boxShadow = '0 6px 15px rgba(0,0,0,0.15)';
+                }}
+                onMouseLeave={e => { 
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; 
+                  e.currentTarget.style.transform = 'translateY(0)'; 
+                  e.currentTarget.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+                }}
               >
-                <Icon size={18} />
+                <Icon size={20} color={social.color} />
               </a>
             );
           })}

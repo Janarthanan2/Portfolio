@@ -63,6 +63,7 @@ const Hero: React.FC = () => {
               onMouseEnter={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = 'rgba(255,255,255,0.25)'; }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '0.8'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; }}
             >
+              {/* @ts-ignore - Brand icons are deprecated in lucide-react but still work */}
               <Github size={20} />
             </a>
             <a href="https://www.linkedin.com/in/janarthananvk-57b9b3256/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
@@ -70,6 +71,7 @@ const Hero: React.FC = () => {
               onMouseEnter={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = 'rgba(255,255,255,0.25)'; }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '0.8'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; }}
             >
+              {/* @ts-ignore - Brand icons are deprecated in lucide-react but still work */}
               <Linkedin size={20} />
             </a>
           </motion.div>
