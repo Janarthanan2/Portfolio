@@ -97,15 +97,15 @@ const Header: React.FC = () => {
               <li key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeSection === item.id
-                    ? 'text-white'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-[var(--accent-color)]'
+                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeSection === item.id
+                    ? 'text-white drop-shadow-sm'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#00572A] hover:to-[#0a8043] hover:drop-shadow-sm'
                     }`}
                 >
                   {activeSection === item.id && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-[var(--accent-color)] rounded-full -z-10"
+                      className="absolute inset-0 bg-gradient-to-br from-[#00572A] to-[#0a8043] rounded-full shadow-md shadow-[#00572A]/40 -z-10"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -156,9 +156,9 @@ const Header: React.FC = () => {
                   <li key={item.id}>
                     <button
                       onClick={() => scrollToSection(item.id)}
-                      className={`w-full text-left px-4 py-3 rounded-xl transition-colors ${activeSection === item.id
-                        ? 'bg-[var(--accent-color)] text-white'
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5'
+                      className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${activeSection === item.id
+                        ? 'bg-gradient-to-br from-[#00572A] to-[#0a8043] shadow-md shadow-[#00572A]/30 text-white'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#00572A] hover:to-[#0a8043] hover:bg-gray-50 dark:hover:bg-white/5'
                         }`}
                     >
                       {item.label}
