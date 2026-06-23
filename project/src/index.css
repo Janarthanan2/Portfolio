@@ -4,6 +4,197 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========== LOADING SCREEN ========== */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading-corner {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-family: 'Outfit', monospace;
+}
+
+.loading-corner-tl { top: 2rem; left: 2rem; }
+.loading-corner-tr { top: 2rem; right: 2rem; }
+.loading-corner-bl { bottom: 2rem; left: 2rem; }
+.loading-corner-br { bottom: 2rem; right: 2rem; }
+
+.loading-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loading-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 24px;
+  border: 2px solid rgba(0, 230, 118, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(0, 230, 118, 0.05);
+}
+
+.loading-logo-text {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, var(--accent-color, #00E676), #00C853);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.loading-logo-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 28px;
+  border: 2px solid transparent;
+  border-top-color: var(--accent-color, #00E676);
+  border-right-color: rgba(0, 230, 118, 0.3);
+}
+
+.loading-tagline {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.loading-progress-track {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loading-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color, #00E676), #00C853);
+  border-radius: 2px;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
+}
+
+.loading-counter {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
+
+/* ========== ANIMATED BACKGROUND ========== */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+body.dark .bg-orb {
+  opacity: 0.08;
+}
+
+.bg-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent-color, #00E676), transparent 70%);
+  top: 10%;
+  right: -5%;
+  animation-delay: 0s;
+  animation-duration: 22s;
+}
+
+.bg-orb-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #00C853, transparent 70%);
+  bottom: 20%;
+  left: -5%;
+  animation-delay: -5s;
+  animation-duration: 18s;
+}
+
+.bg-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #00b09b, transparent 70%);
+  top: 50%;
+  left: 40%;
+  animation-delay: -10s;
+  animation-duration: 25s;
+}
+
+.bg-orb-4 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #96c93d, transparent 70%);
+  top: 70%;
+  right: 20%;
+  animation-delay: -15s;
+  animation-duration: 20s;
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(40px, -60px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 40px) scale(0.9);
+  }
+  75% {
+    transform: translate(50px, 20px) scale(1.05);
+  }
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+body.dark .bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+}
+
 /* Root Theme Variables */
 :root {
   --bg-color: #ffffff;
@@ -32,6 +223,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.4s, color 0.4s;
+  scroll-behavior: smooth;
 }
 
 .navbar {
@@ -128,7 +320,7 @@ body {
 }
 
 .particles-canvas {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -173,12 +365,14 @@ body {
   max-width: 350px;
   height: auto;
   border-radius: 50px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 40px rgba(0, 230, 118, 0.4), 0 0 80px rgba(0, 230, 118, 0.15), 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 3px solid rgba(255, 255, 255, 0.25);
 }
 
 .hero-main-image:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 60px rgba(0, 230, 118, 0.5), 0 0 120px rgba(0, 230, 118, 0.2), 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .hero-text {
@@ -229,11 +423,23 @@ section {
 
 h2 {
   color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom: none;
   padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-color), #00C853);
+  border-radius: 2px;
+  margin: 0.75rem auto 0;
 }
 
 .timeline .event {
@@ -242,13 +448,14 @@ h2 {
   border-left: 5px solid var(--accent-color);
   margin-bottom: 1rem;
   border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(10px);
   transition: transform 0.3s ease;
 }
 
 .timeline .event:hover {
   transform: translateX(10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 230, 118, 0.1);
 }
 
 /* New Skills Section Styles */
@@ -269,7 +476,7 @@ h2 {
   background: var(--card-bg);
   padding: 2rem;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -277,7 +484,7 @@ h2 {
 
 .skill-category:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 10px 25px rgba(0, 230, 118, 0.15);
 }
 
 .category-title {
@@ -414,17 +621,36 @@ body.dark .skill-bar {
 .project-card {
   background: var(--card-bg);
   padding: 1.5rem;
-  border-radius: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--accent-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), #00C853);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before {
+  opacity: 1;
 }
 
 .project-card:hover {
-  transform: perspective(500px) rotateX(5deg) rotateY(5deg) translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(0, 230, 118, 0.1);
 }
 
 .project-card h3 {
@@ -501,11 +727,12 @@ footer {
 
 .education-heading {
   color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom: none;
   padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 .timeline-items {

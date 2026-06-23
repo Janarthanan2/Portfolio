@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface EducationItem {
   date: string;
@@ -27,17 +28,32 @@ const Education: React.FC = () => {
 
   return (
     <section id="education" className="education">
-      <h2 className="education-heading">Education</h2>
+      <motion.h2
+        className="education-heading"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.5 }}
+      >
+        Education
+      </motion.h2>
       <div className="timeline-items">
         {educationData.map((item, index) => (
-          <div key={index} className="timeline-item">
+          <motion.div
+            key={index}
+            className="timeline-item"
+            initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
+          >
             <div className="timeline-dot"></div>
             <div className="timeline-date">{item.date}</div>
             <div className="timeline-content">
               <h3>{item.institution}</h3>
               <p>{item.description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

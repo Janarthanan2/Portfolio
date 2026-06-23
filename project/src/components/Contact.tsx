@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -104,13 +104,13 @@ const Contact: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden md:block"
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-lime-500 rounded-3xl opacity-30 blur-2xl transform rotate-6 scale-105" />
-              <div className="relative bg-white/80 dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-2xl">
+              <div className="relative bg-white/80 dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.15),_0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.2),_0_15px_30px_rgba(0,230,118,0.15)] transition-shadow duration-300">
                 <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Let's Connect</h3>
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4 p-4 rounded-xl bg-green-50 dark:bg-white/5 hover:bg-green-100 dark:hover:bg-white/10 transition-colors">
@@ -139,10 +139,10 @@ const Contact: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <form onSubmit={handleSubmit} className="bg-white/80 dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-2xl space-y-6 relative overflow-hidden">
+            <form onSubmit={handleSubmit} className="bg-white/80 dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.15),_0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.2),_0_15px_30px_rgba(0,230,118,0.15)] transition-shadow duration-300 space-y-6 relative overflow-hidden">
 
               <AnimatePresence>
                 {isSuccess && (
