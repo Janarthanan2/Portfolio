@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, ChevronDown } from 'lucide-react';
 import TypewriterText from './TypewriterText';
 import ParticleBackground from './ParticleBackground';
+import { LocationTag } from '@/components/ui/location-tag';
+import { NeonPulseButton, ElectricGlowButton } from '@/components/ui/gradient-buttons';
 import janarthananResume from '../assets/Janarthanan_Resume.pdf';
 
 const Hero: React.FC = () => {
@@ -48,8 +50,12 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
-            <a href="mailto:janartanan47@gmail.com" className="btn">Hire Me</a>
-            <a href={janarthananResume} className="btn" download>Download Resume</a>
+            <a href="mailto:janartanan47@gmail.com" style={{ textDecoration: 'none' }}>
+              <NeonPulseButton>Hire Me</NeonPulseButton>
+            </a>
+            <a href={janarthananResume} download style={{ textDecoration: 'none' }}>
+              <ElectricGlowButton>Download Resume</ElectricGlowButton>
+            </a>
           </motion.div>
           <motion.div
             className="hero-socials"
@@ -74,6 +80,14 @@ const Hero: React.FC = () => {
               {/* @ts-ignore - Brand icons are deprecated in lucide-react but still work */}
               <Linkedin size={20} />
             </a>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            style={{ marginTop: '1rem' }}
+          >
+            <LocationTag city="Tamil Nadu" country="India" timezone="IST" />
           </motion.div>
         </motion.div>
       </div>
