@@ -38,14 +38,14 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
 
       {/* Center box */}
       <div className="loading-center">
-        {/* Animated logo icon */}
+        {/* Animated logo initials */}
         <motion.div
-          className="loading-logo relative flex items-center justify-center p-2 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden"
+          className="loading-logo"
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
         >
-          <img src="/logo.png" alt="Loading Logo" className="w-16 h-16 object-contain rounded-xl drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]" />
+          <span className="loading-logo-text">JANA</span>
           <motion.div
             className="loading-logo-ring"
             initial={{ pathLength: 0 }}
@@ -53,6 +53,7 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
             transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
           />
         </motion.div>
+
 
 
         {/* Tagline */}
