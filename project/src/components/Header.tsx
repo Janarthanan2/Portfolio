@@ -82,14 +82,24 @@ const Header: React.FC = () => {
 
           {/* Logo / Name - Left */}
           <div
-            className={`text-2xl font-extrabold cursor-pointer shrink-0 transition-all duration-300 hover:scale-105 ${isScrolled
-              ? 'bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-emerald-500'
-              : 'text-white drop-shadow-md'
-              }`}
+            className="flex items-center gap-3 cursor-pointer shrink-0 transition-all duration-300 hover:scale-105"
             onClick={scrollToTop}
           >
-            Janarthanan V K
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="w-9 h-9 object-contain rounded-lg shadow-md border border-white/20 dark:border-emerald-500/30"
+            />
+            <span
+              className={`text-xl font-extrabold transition-all duration-300 ${isScrolled
+                ? 'bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-emerald-500'
+                : 'text-white drop-shadow-md'
+                }`}
+            >
+              Janarthanan V K
+            </span>
           </div>
+
 
           {/* Desktop Nav - Center */}
           <ul className="hidden md:flex items-center gap-1 flex-1 justify-center">

@@ -31,10 +31,12 @@ const Footer: React.FC = () => {
       textAlign: 'center',
     }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        {/* Name */}
-        <div style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem' }}>
-          Janarthanan V K
+        {/* Logo & Name */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem' }}>
+          <img src="/logo.png" alt="Logo" style={{ width: '32px', height: '32px', objectFit: 'contain', borderRadius: '8px' }} />
+          <span>Janarthanan V K</span>
         </div>
+
 
         {/* Quick Nav */}
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.5rem 1.5rem', marginBottom: '1.5rem' }}>
