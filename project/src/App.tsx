@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './contexts/ThemeContext';
 import LoadingScreen from './components/LoadingScreen';
-import AnimatedBackground from './components/AnimatedBackground';
-import ParticleBackground from './components/ParticleBackground';
+import SectionBackground from './components/SectionBackground';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -30,8 +29,7 @@ function App() {
 
       {!isLoading && (
         <main className="app">
-          <AnimatedBackground />
-          <ParticleBackground colorTheme="green" isFixed={true} />
+          <SectionBackground />
           <Header />
           <Hero />
           <About />

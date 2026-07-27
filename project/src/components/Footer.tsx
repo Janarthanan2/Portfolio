@@ -24,13 +24,32 @@ const Footer: React.FC = () => {
 
   return (
     <footer style={{
-      background: 'linear-gradient(135deg, var(--nav-bg), #00352a)',
+      position: 'relative',
       color: 'white',
       padding: '3rem 2rem 1.5rem',
       marginTop: '2rem',
       textAlign: 'center',
+      overflow: 'hidden',
     }}>
-      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+      {/* Background image flipped horizontally */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'url(/backgrounds/bg-footer.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        transform: 'scaleY(-1)',
+        zIndex: 0,
+      }} />
+      {/* Dark overlay for readability */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(135deg, rgba(0,37,26,0.85), rgba(0,53,42,0.8))',
+        zIndex: 0,
+      }} />
+      <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Name */}
         <div style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem' }}>
           Janarthanan V K
