@@ -15,9 +15,7 @@ const Footer: React.FC = () => {
   ];
 
   const socialLinks = [
-    // @ts-ignore - Brand icons are deprecated in lucide-react but still work
     { icon: Github, href: 'https://github.com/Janarthanan2', label: 'GitHub', color: '#ffffff' },
-    // @ts-ignore - Brand icons are deprecated in lucide-react but still work
     { icon: Linkedin, href: 'https://www.linkedin.com/in/janarthananvk-57b9b3256/', label: 'LinkedIn', color: '#0A66C2' },
     { icon: Mail, href: 'mailto:janartanan47@gmail.com', label: 'Email', color: '#EA4335' },
   ];
@@ -66,7 +64,7 @@ const Footer: React.FC = () => {
               style={{
                 background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)',
                 cursor: 'pointer', fontFamily: 'inherit', fontSize: '0.9rem', fontWeight: 500,
-                padding: '0.25rem 0', transition: 'color 0.3s',
+                padding: '0.5rem 0.75rem', minHeight: '44px', minWidth: '44px', transition: 'color 0.3s',
               }}
               onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-color)'; }}
               onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; }}

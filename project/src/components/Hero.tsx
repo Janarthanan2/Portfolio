@@ -69,7 +69,6 @@ const Hero: React.FC = () => {
               onMouseEnter={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = 'rgba(255,255,255,0.25)'; }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '0.8'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; }}
             >
-              {/* @ts-ignore - Brand icons are deprecated in lucide-react but still work */}
               <Github size={20} />
             </a>
             <a href="https://www.linkedin.com/in/janarthananvk-57b9b3256/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
@@ -77,7 +76,6 @@ const Hero: React.FC = () => {
               onMouseEnter={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = 'rgba(255,255,255,0.25)'; }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '0.8'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; }}
             >
-              {/* @ts-ignore - Brand icons are deprecated in lucide-react but still work */}
               <Linkedin size={20} />
             </a>
           </motion.div>
@@ -94,7 +92,7 @@ const Hero: React.FC = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, cursor: 'pointer', color: 'white', opacity: 0.7 }}
+        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, cursor: 'pointer', color: 'white', opacity: 0.7, minWidth: '44px', minHeight: '44px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}

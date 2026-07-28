@@ -1125,7 +1125,12 @@ footer {
 @media (hover: none) and (pointer: coarse) {
   /* Increase tap targets */
   .nav-links button,
-  footer button {
+  footer button,
+  a,
+  button,
+  input,
+  textarea,
+  .btn {
     min-height: 44px;
     min-width: 44px;
   }

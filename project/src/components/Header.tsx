@@ -60,7 +60,7 @@ const Header: React.FC = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
-            className="fixed bottom-8 right-8 z-50 cursor-pointer text-white bg-[var(--accent-color)] p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow"
+            className="fixed bottom-8 right-8 z-50 cursor-pointer text-white bg-[var(--accent-color)] p-3.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full shadow-lg hover:shadow-xl transition-shadow"
             onClick={scrollToTop}
           >
             <ArrowUp size={24} />
@@ -99,7 +99,7 @@ const Header: React.FC = () => {
               <li key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeSection === item.id
+                  className={`relative px-4 py-2 min-h-[44px] rounded-full text-sm font-medium transition-all duration-300 ${activeSection === item.id
                     ? 'text-white drop-shadow-sm'
                     : 'text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#00572A] hover:to-[#0a8043] hover:drop-shadow-sm'
                     }`}
@@ -121,7 +121,7 @@ const Header: React.FC = () => {
           <div className="hidden md:block pl-2 border-l border-gray-200 dark:border-gray-700 shrink-0">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-700 dark:text-white"
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-700 dark:text-white"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -131,13 +131,13 @@ const Header: React.FC = () => {
           <div className="md:hidden flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-700 dark:text-white"
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-700 dark:text-white"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-700 dark:text-white"
+              className="text-gray-700 dark:text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -158,7 +158,7 @@ const Header: React.FC = () => {
                   <li key={item.id}>
                     <button
                       onClick={() => scrollToSection(item.id)}
-                      className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${activeSection === item.id
+                      className={`w-full text-left px-4 py-3 min-h-[44px] rounded-xl transition-all duration-300 ${activeSection === item.id
                         ? 'bg-gradient-to-br from-[#00572A] to-[#0a8043] shadow-md shadow-[#00572A]/30 text-white'
                         : 'text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#00572A] hover:to-[#0a8043] hover:bg-gray-50 dark:hover:bg-white/5'
                         }`}

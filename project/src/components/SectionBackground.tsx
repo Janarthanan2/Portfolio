@@ -13,7 +13,7 @@ const sectionBackgrounds = [
 ];
 
 // Transition variants for different morphing effects
-const transitionVariants: Record<string, any> = {
+const transitionVariants: Record<string, { initial: any; animate: any; exit: any }> = {
   // Smooth scale + fade
   scaleIn: {
     initial: { opacity: 0, scale: 1.15 },

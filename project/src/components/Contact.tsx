@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mail, User, MessageSquare, CheckCircle, Loader2 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 
 interface FormData {
   name: string;
@@ -41,13 +40,17 @@ const Contact: React.FC = () => {
     const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'dJjqtTiW6xUVDSweV';
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      console.error('EmailJS keys are missing from environment variables');
+      if (import.meta.env.DEV) {
+        console.error('EmailJS keys are missing from environment variables');
+      }
       alert('Email configuration is missing. Please check .env file.');
       setIsSubmitting(false);
       return;
     }
 
     try {
+      const emailjs = (await import('@emailjs/browser')).default;
+      
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
@@ -65,7 +68,9 @@ const Contact: React.FC = () => {
       // Reset success message after 3 seconds
       setTimeout(() => setIsSuccess(false), 3000);
     } catch (error) {
-      console.error('FAILED...', error);
+      if (import.meta.env.DEV) {
+        console.error('FAILED...', error);
+      }
       alert(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setIsSubmitting(false);
@@ -164,7 +169,7 @@ const Contact: React.FC = () => {
                     <p className="text-gray-600 dark:text-gray-300 text-center">Thank you for reaching out. I'll get back to you soon.</p>
                     <button
                       onClick={() => setIsSuccess(false)}
-                      className="mt-8 px-6 py-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 rounded-full text-gray-900 dark:text-white transition-colors"
+                      className="mt-8 px-6 py-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 rounded-full text-gray-900 dark:text-white transition-colors min-h-[44px]"
                     >
                       Send another message
                     </button>
