@@ -55,8 +55,9 @@ const ParticleBackground: React.FC<Props> = ({ colorTheme = 'green', isFixed = t
     }
     window.addEventListener('mouseout', handleMouseLeave);
 
-    // Initialize particles
-    const maxParticles = 60; // Moderate amount
+    // Initialize particles - fewer on mobile for performance
+    const isMobile = window.innerWidth <= 768;
+    const maxParticles = isMobile ? 25 : 60;
     particlesRef.current = [];
 
     for (let i = 0; i < maxParticles; i++) {
@@ -69,8 +70,8 @@ const ParticleBackground: React.FC<Props> = ({ colorTheme = 'green', isFixed = t
       });
     }
 
-    const connectionDistance = 150;
-    const mouseRadius = 180;
+    const connectionDistance = isMobile ? 100 : 150;
+    const mouseRadius = isMobile ? 0 : 180;
     
     const rgb = colorTheme === 'white' ? '255, 255, 255' : '0, 200, 83';
 
@@ -146,22 +147,24 @@ const ParticleBackground: React.FC<Props> = ({ colorTheme = 'green', isFixed = t
         ctx.fill();
       });
 
-      // Draw mouse interactive lines
-      particles.forEach(particle => {
-        const dxMouse = mouse.x - particle.x;
-        const dyMouse = mouse.y - particle.y;
-        const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+      // Draw mouse interactive lines (skip on mobile - no mouse)
+      if (!isMobile) {
+        particles.forEach(particle => {
+          const dxMouse = mouse.x - particle.x;
+          const dyMouse = mouse.y - particle.y;
+          const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
-        if (distMouse < mouseRadius) {
-          const opacity = (1 - distMouse / mouseRadius) * (colorTheme === 'white' ? 0.4 : 0.6);
-          ctx.beginPath();
-          ctx.moveTo(particle.x, particle.y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(${rgb}, ${opacity})`;
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-        }
-      });
+          if (distMouse < mouseRadius) {
+            const opacity = (1 - distMouse / mouseRadius) * (colorTheme === 'white' ? 0.4 : 0.6);
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(${rgb}, ${opacity})`;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          }
+        });
+      }
 
       requestAnimationFrame(animate);
     };

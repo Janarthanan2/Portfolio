@@ -82,7 +82,7 @@ const Header: React.FC = () => {
 
           {/* Logo / Name - Left */}
           <div
-            className={`text-2xl font-extrabold cursor-pointer shrink-0 transition-all duration-300 hover:scale-105 ${isScrolled
+            className={`text-xl md:text-2xl font-extrabold cursor-pointer shrink-0 transition-all duration-300 hover:scale-105 truncate max-w-[150px] md:max-w-none ${isScrolled
               ? 'bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-emerald-500'
               : 'text-white drop-shadow-md'
               }`}

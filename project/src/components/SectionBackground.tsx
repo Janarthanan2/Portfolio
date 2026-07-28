@@ -69,10 +69,21 @@ const SectionBackground: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Track mouse position for parallax effect
+  // Detect mobile once on mount
   useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  // Track mouse position for parallax effect (desktop only)
+  useEffect(() => {
+    if (isMobile) return;
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({
         x: (e.clientX / window.innerWidth - 0.5) * 2,
@@ -82,7 +93,7 @@ const SectionBackground: React.FC = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isMobile]);
 
   // Track scroll progress for subtle zoom
   useEffect(() => {
@@ -136,9 +147,9 @@ const SectionBackground: React.FC = () => {
   const currentBg = sectionBackgrounds[activeIndex];
   const variant = getTransitionForIndex(activeIndex);
 
-  // Parallax offset based on mouse position
-  const parallaxX = mousePos.x * 15;
-  const parallaxY = mousePos.y * 15;
+  // Parallax offset based on mouse position (disabled on mobile)
+  const parallaxX = isMobile ? 0 : mousePos.x * 15;
+  const parallaxY = isMobile ? 0 : mousePos.y * 15;
   const dynamicScale = 1.05 + scrollProgress * 0.05;
 
   return (
@@ -211,7 +222,7 @@ const SectionBackground: React.FC = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Floating light particles that react to mouse */}
+      {/* Floating light particles that react to mouse (reduced on mobile) */}
       <div
         style={{
           position: 'absolute',
@@ -219,12 +230,12 @@ const SectionBackground: React.FC = () => {
           overflow: 'hidden',
         }}
       >
-        {Array.from({ length: 6 }).map((_, i) => (
+        {Array.from({ length: isMobile ? 2 : 6 }).map((_, i) => (
           <motion.div
             key={i}
             animate={{
-              x: [0, Math.sin(i * 1.2) * 100, 0],
-              y: [0, Math.cos(i * 0.8) * 80, 0],
+              x: [0, Math.sin(i * 1.2) * (isMobile ? 40 : 100), 0],
+              y: [0, Math.cos(i * 0.8) * (isMobile ? 30 : 80), 0],
               opacity: [0.1, 0.25, 0.1],
               scale: [1, 1.3, 1],
             }}
@@ -236,14 +247,14 @@ const SectionBackground: React.FC = () => {
             }}
             style={{
               position: 'absolute',
-              width: `${100 + i * 50}px`,
-              height: `${100 + i * 50}px`,
+              width: `${isMobile ? 60 + i * 30 : 100 + i * 50}px`,
+              height: `${isMobile ? 60 + i * 30 : 100 + i * 50}px`,
               borderRadius: '50%',
               background: `radial-gradient(circle, rgba(0,230,118,${0.08 + i * 0.02}), transparent 70%)`,
               top: `${15 + i * 13}%`,
               left: `${10 + i * 15}%`,
-              filter: 'blur(40px)',
-              transform: `translate(${mousePos.x * (5 + i * 3)}px, ${mousePos.y * (5 + i * 3)}px)`,
+              filter: isMobile ? 'blur(30px)' : 'blur(40px)',
+              transform: isMobile ? 'none' : `translate(${mousePos.x * (5 + i * 3)}px, ${mousePos.y * (5 + i * 3)}px)`,
               transition: 'transform 0.3s ease-out',
             }}
           />

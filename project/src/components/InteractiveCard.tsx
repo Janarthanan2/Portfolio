@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 
 interface Props {
@@ -10,6 +10,15 @@ interface Props {
 const InteractiveCard: React.FC<Props> = ({ children, className = '', style }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: none) and (pointer: coarse)');
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
   
   // Spotlight
   const mouseX = useMotionValue(0);
@@ -23,7 +32,7 @@ const InteractiveCard: React.FC<Props> = ({ children, className = '', style }) =
   const rotateY = useTransform(useSpring(x, { stiffness: 300, damping: 30 }), [-0.5, 0.5], ["-5deg", "5deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (isMobile || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     
     // Spotlight position
@@ -40,8 +49,9 @@ const InteractiveCard: React.FC<Props> = ({ children, className = '', style }) =
     y.set(mouseYRel / height - 0.5);
   };
 
-  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseEnter = () => { if (!isMobile) setIsHovered(true); };
   const handleMouseLeave = () => {
+    if (isMobile) return;
     setIsHovered(false);
     x.set(0);
     y.set(0);
@@ -70,7 +80,7 @@ const InteractiveCard: React.FC<Props> = ({ children, className = '', style }) =
         border: '1px solid rgba(255,255,255,0.1)',
       }}
       className={className}
-      whileHover={{ scale: 1.02 }}
+      whileHover={isMobile ? undefined : { scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
     >
       {/* Dynamic Glow Spotlight inside the card */}

@@ -899,18 +899,51 @@ footer {
     display: none;
   }
 
+  .hero {
+    padding: 1.5rem 1rem;
+    min-height: 100vh;
+    height: auto;
+  }
+
   .hero-container {
     flex-direction: column;
     text-align: center;
+    gap: 1.5rem;
+    padding-top: 4rem;
   }
 
   .hero-text {
     padding-left: 0;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-main-image {
+    width: 60%;
+    max-width: 220px;
+    border-radius: 35px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  section {
+    padding: 3rem 1.25rem;
   }
 
   .timeline-items::before {
@@ -927,20 +960,47 @@ footer {
     left: 10px;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
+  .timeline-content {
+    padding: 1.25rem;
   }
 
-  .hero-buttons {
-    justify-content: center;
+  .timeline-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .skills-container {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .skills-section {
+    padding: 3rem 1.25rem;
+  }
+
+  .skill-category {
+    padding: 1.5rem;
   }
 
   .skills-summary {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .summary-card {
+    padding: 1.5rem;
+  }
+
+  .summary-number {
+    font-size: 2rem;
   }
 
   .scroll-to-top {
@@ -948,24 +1008,68 @@ footer {
     right: 1.5rem;
     padding: 0.6rem;
   }
+
+  .education {
+    padding: 3rem 1.25rem;
+  }
+
+  #internship {
+    padding: 3rem 1.25rem;
+  }
+
+  /* Disable heavy hover effects on touch */
+  .project-card:hover {
+    transform: none;
+  }
+
+  .skill-category:hover {
+    transform: none;
+  }
+
+  .timeline-content:hover {
+    transform: none;
+  }
+
+  .summary-card:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding: 1rem 0.75rem;
+  }
+
+  .hero-container {
+    padding-top: 3.5rem;
+  }
+
   .hero-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .hero-text p {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-main-image {
+    width: 55%;
+    max-width: 180px;
+    border-radius: 30px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 
   section {
     padding: 2rem 1rem;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .btn {
@@ -975,12 +1079,12 @@ footer {
   }
 
   .skill-category {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .skills-container {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .scroll-to-top {
@@ -993,5 +1097,60 @@ footer {
     top: 0.75rem;
     right: 0.75rem;
     padding: 0.4rem;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+
+  .education {
+    padding: 2rem 1rem;
+  }
+
+  #internship {
+    padding: 2rem 1rem;
+  }
+
+  .loading-corner {
+    font-size: 1rem;
+  }
+
+  .loading-corner-tl { top: 1rem; left: 1rem; }
+  .loading-corner-tr { top: 1rem; right: 1rem; }
+  .loading-corner-bl { bottom: 1rem; left: 1rem; }
+  .loading-corner-br { bottom: 1rem; right: 1rem; }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase tap targets */
+  .nav-links button,
+  footer button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Disable hover-dependent effects */
+  .hero-main-image:hover {
+    transform: none;
+    box-shadow: 0 0 40px rgba(0, 230, 118, 0.4), 0 0 80px rgba(0, 230, 118, 0.15), 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .project-card:hover {
+    transform: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .project-card:hover::before {
+    opacity: 0;
+  }
+
+  .timeline .event:hover {
+    transform: none;
+  }
+
+  /* Remove tap highlight */
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 }
