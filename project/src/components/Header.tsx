@@ -99,10 +99,13 @@ const Header: React.FC = () => {
               <li key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-4 py-2 min-h-[44px] rounded-full text-sm font-medium transition-all duration-300 ${activeSection === item.id
-                    ? 'text-white drop-shadow-sm'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#00572A] hover:to-[#0a8043] hover:drop-shadow-sm'
-                    }`}
+                  className={`relative px-4 py-2 min-h-[44px] rounded-full text-sm font-medium transition-all duration-300 ${
+                    activeSection === item.id
+                      ? 'text-white drop-shadow-sm'
+                      : isScrolled
+                        ? 'text-gray-700 dark:text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#00572A] hover:to-[#0a8043] hover:drop-shadow-sm'
+                        : 'text-white/80 hover:text-white hover:drop-shadow-md'
+                  }`}
                 >
                   {activeSection === item.id && (
                     <motion.div

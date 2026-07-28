@@ -1,15 +1,14 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 
-// Background images mapped to sections
 const sectionBackgrounds = [
-  { id: 'hero', image: '/backgrounds/bg-hero.jpg', overlay: 'linear-gradient(135deg, rgba(0,77,64,0.4), rgba(0,176,155,0.25))' },
-  { id: 'about', image: '/giphy.gif', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.45), rgba(60,20,80,0.3))' },
-  { id: 'education', image: '/backgrounds/bg-galaxy.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.7), rgba(30,20,60,0.55))' },
-  { id: 'skills', image: '/backgrounds/bg-laptop.jpg', overlay: 'linear-gradient(135deg, rgba(0,0,0,0.75), rgba(0,40,40,0.6))' },
-  { id: 'projects', image: '/backgrounds/bg-stars.jpg', overlay: 'linear-gradient(135deg, rgba(10,15,40,0.65), rgba(40,20,60,0.5))' },
-  { id: 'internship', image: '/backgrounds/bg-laptop.jpg', overlay: 'linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,30,30,0.55))' },
-  { id: 'contact', image: '/backgrounds/bg-contact.jpg', overlay: 'linear-gradient(135deg, rgba(10,20,50,0.65), rgba(20,10,40,0.5))' },
+  { id: 'hero', image: '/backgrounds/bg-hero-new.jpg', overlay: 'linear-gradient(135deg, rgba(0,77,64,0.4), rgba(0,176,155,0.25))' },
+  { id: 'about', image: '/backgrounds/bg-sci-fi-sky.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.6), rgba(60,20,80,0.5))' },
+  { id: 'education', image: '/backgrounds/bg-sci-fi-sky.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.6), rgba(60,20,80,0.5))' },
+  { id: 'skills', image: '/backgrounds/bg-sci-fi-sky.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.6), rgba(60,20,80,0.5))' },
+  { id: 'projects', image: '/backgrounds/bg-sci-fi-sky.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.6), rgba(60,20,80,0.5))' },
+  { id: 'internship', image: '/backgrounds/bg-sci-fi-sky.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.6), rgba(60,20,80,0.5))' },
+  { id: 'contact', image: '/backgrounds/bg-sci-fi-sky.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.6), rgba(60,20,80,0.5))' },
 ];
 
 // Transition variants for different morphing effects
@@ -58,11 +57,9 @@ const transitionVariants: Record<string, { initial: any; animate: any; exit: any
   },
 };
 
-// Cycle through transition types based on section index
-const transitionKeys = Object.keys(transitionVariants);
-const getTransitionForIndex = (index: number) => {
-  const key = transitionKeys[index % transitionKeys.length];
-  return transitionVariants[key];
+// Use a single smooth transition for background changes
+const getTransition = () => {
+  return transitionVariants.scaleIn;
 };
 
 const SectionBackground: React.FC = () => {
@@ -111,41 +108,60 @@ const SectionBackground: React.FC = () => {
   useEffect(() => {
     const sectionIds = sectionBackgrounds.map(s => s.id);
     const observers: IntersectionObserver[] = [];
+    const observedElements = new Set<string>();
 
-    sectionIds.forEach((id, index) => {
-      // Special case: hero doesn't have an id, it's the first section
-      let element: HTMLElement | null = null;
-      if (id === 'hero') {
-        element = document.querySelector('.hero');
-      } else {
-        element = document.getElementById(id);
-      }
+    const observeElements = () => {
+      sectionIds.forEach((id, index) => {
+        if (observedElements.has(id)) return;
 
-      if (!element) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-              setActiveIndex(index);
-            }
-          });
-        },
-        {
-          threshold: [0.3, 0.5, 0.7],
-          rootMargin: '-10% 0px -10% 0px',
+        let element: HTMLElement | null = null;
+        if (id === 'hero') {
+          element = document.querySelector('.hero');
+        } else {
+          element = document.getElementById(id);
         }
-      );
 
-      observer.observe(element);
-      observers.push(observer);
+        if (element) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+                  setActiveIndex(index);
+                }
+              });
+            },
+            {
+              threshold: [0.3, 0.5, 0.7],
+              rootMargin: '-10% 0px -10% 0px',
+            }
+          );
+          observer.observe(element);
+          observers.push(observer);
+          observedElements.add(id);
+        }
+      });
+    };
+
+    observeElements();
+
+    const mutationObserver = new MutationObserver(() => {
+      if (observedElements.size < sectionIds.length) {
+        observeElements();
+      } else {
+        mutationObserver.disconnect();
+      }
     });
 
-    return () => observers.forEach(o => o.disconnect());
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observers.forEach(o => o.disconnect());
+      mutationObserver.disconnect();
+    };
   }, []);
 
   const currentBg = sectionBackgrounds[activeIndex];
-  const variant = getTransitionForIndex(activeIndex);
+  const variant = getTransition();
 
   // Parallax offset based on mouse position (disabled on mobile)
   const parallaxX = isMobile ? 0 : mousePos.x * 15;
@@ -165,7 +181,7 @@ const SectionBackground: React.FC = () => {
     >
       <AnimatePresence mode="wait">
         <motion.div
-          key={currentBg.id + currentBg.image}
+          key={currentBg.image}
           initial={variant.initial}
           animate={{
             ...variant.animate,
@@ -175,9 +191,7 @@ const SectionBackground: React.FC = () => {
           exit={variant.exit}
           transition={{
             duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
-            clipPath: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-            filter: { duration: 0.4, ease: 'easeOut' },
+            ease: 'easeOut'
           }}
           style={{
             position: 'absolute',
