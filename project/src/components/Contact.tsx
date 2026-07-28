@@ -91,7 +91,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 inline-block bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-lime-500 border-none">
+          <h2 className="text-4xl font-bold mb-4 inline-block bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-lime-500 border-none" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.8))' }}>
             Get In Touch
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto text-lg">

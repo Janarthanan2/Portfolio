@@ -39,19 +39,19 @@ const Footer: React.FC = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        transform: 'scaleY(-1)',
+        transform: 'scaleY(1)',
         zIndex: 0,
       }} />
-      {/* Dark overlay for readability */}
+      {/* Dark overlay for readability - toned down for brighter image */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(135deg, rgba(0,37,26,0.85), rgba(0,53,42,0.8))',
+        background: 'linear-gradient(135deg, rgba(0,20,15,0.85), rgba(0,35,25,0.75))',
         zIndex: 0,
       }} />
       <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Name */}
-        <div style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem' }}>
+        <div style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.25rem', textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
           Janarthanan V K
         </div>
 

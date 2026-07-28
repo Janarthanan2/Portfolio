@@ -30,21 +30,29 @@ const About: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.5 }}
+        style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5)' }}
       >
         About Me
       </motion.h2>
 
-      <motion.p
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem', opacity: 0.85, lineHeight: 1.8, fontSize: '1.05rem' }}
+        style={{
+          textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem',
+          background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+          borderRadius: '16px', padding: '1.5rem 2rem',
+          border: '1px solid rgba(255,255,255,0.1)',
+        }}
       >
-        A passionate AI & Data Science student with a knack for building intelligent solutions.
-        I love exploring the intersection of deep learning, computer vision, and web development
-        to create impactful real-world applications.
-      </motion.p>
+        <p style={{ margin: 0, lineHeight: 1.8, fontSize: '1.05rem', color: '#f0f0f0' }}>
+          A passionate AI & Data Science student with a knack for building intelligent solutions.
+          I love exploring the intersection of deep learning, computer vision, and web development
+          to create impactful real-world applications.
+        </p>
+      </motion.div>
 
       <motion.div
         variants={containerVariants}

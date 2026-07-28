@@ -4,12 +4,12 @@ import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-mo
 // Background images mapped to sections
 const sectionBackgrounds = [
   { id: 'hero', image: '/backgrounds/bg-hero.jpg', overlay: 'linear-gradient(135deg, rgba(0,77,64,0.4), rgba(0,176,155,0.25))' },
-  { id: 'about', image: '/backgrounds/bg-galaxy.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.65), rgba(60,20,80,0.5))' },
+  { id: 'about', image: '/giphy.gif', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.45), rgba(60,20,80,0.3))' },
   { id: 'education', image: '/backgrounds/bg-galaxy.jpg', overlay: 'linear-gradient(135deg, rgba(10,10,30,0.7), rgba(30,20,60,0.55))' },
   { id: 'skills', image: '/backgrounds/bg-laptop.jpg', overlay: 'linear-gradient(135deg, rgba(0,0,0,0.75), rgba(0,40,40,0.6))' },
   { id: 'projects', image: '/backgrounds/bg-stars.jpg', overlay: 'linear-gradient(135deg, rgba(10,15,40,0.65), rgba(40,20,60,0.5))' },
   { id: 'internship', image: '/backgrounds/bg-laptop.jpg', overlay: 'linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,30,30,0.55))' },
-  { id: 'contact', image: '/backgrounds/bg-stars.jpg', overlay: 'linear-gradient(135deg, rgba(10,20,50,0.7), rgba(20,10,40,0.55))' },
+  { id: 'contact', image: '/backgrounds/bg-contact.jpg', overlay: 'linear-gradient(135deg, rgba(10,20,50,0.65), rgba(20,10,40,0.5))' },
 ];
 
 // Transition variants for different morphing effects
