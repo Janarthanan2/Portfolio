@@ -99,7 +99,10 @@ const Contact: React.FC = () => {
           <h2 className="text-4xl font-bold mb-4 inline-block bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-color)] to-lime-500 border-none" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.8))' }}>
             Get In Touch
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto text-lg">
+          <p 
+            className="max-w-xl mx-auto text-lg md:text-xl font-medium"
+            style={{ color: 'rgba(255, 255, 255, 0.9)', textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}
+          >
             Have a project in mind or just want to say hi? I'd love to hear from you.
           </p>
         </motion.div>
