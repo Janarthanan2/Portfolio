@@ -28,7 +28,7 @@ const About: React.FC = () => {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5)' }}
       >
@@ -38,7 +38,7 @@ const About: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
         style={{
           textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem',
@@ -58,7 +58,7 @@ const About: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: '-50px' }}
+        viewport={{ once: true, margin: '-50px' }}
         style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.25rem' }}
       >
         {achievements.map((achievement, index) => {
@@ -84,7 +84,7 @@ const About: React.FC = () => {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: 'white', boxShadow: '0 4px 12px rgba(0,230,118,0.3)'
                 }}>
-                  <Icon size={22} />
+                  <Icon size={22} aria-hidden="true" />
                 </div>
                 <p style={{ margin: 0, lineHeight: 1.6, fontSize: '0.95rem' }}>{achievement.text}</p>
               </InteractiveCard>

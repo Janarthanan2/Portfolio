@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Folder, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import InteractiveCard from './InteractiveCard';
 
 interface Project {
@@ -43,7 +43,7 @@ const Projects: React.FC = () => {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5)' }}
       >
@@ -52,10 +52,10 @@ const Projects: React.FC = () => {
       <div className="projects-grid">
         {projects.map((project, index) => (
           <motion.div
-            key={index}
+            key={project.link}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: '-30px' }}
+            viewport={{ once: true, margin: '-30px' }}
             transition={{ duration: 0.5, delay: index * 0.12 }}
             style={{ height: '100%' }}
           >

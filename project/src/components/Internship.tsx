@@ -17,7 +17,7 @@ const Internship: React.FC = () => {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5)' }}
       >
@@ -27,7 +27,7 @@ const Internship: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
         <InteractiveCard
@@ -74,7 +74,7 @@ const Internship: React.FC = () => {
               key={index}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}
             >

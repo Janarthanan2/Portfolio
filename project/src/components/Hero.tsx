@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            AI & Data Science Enthusiast | Software Developer
+            AI & Data Science student building computer vision and full-stack applications.
           </motion.p>
           <motion.div
             className="hero-buttons"
@@ -91,14 +91,16 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, cursor: 'pointer', color: 'white', opacity: 0.7, minWidth: '44px', minHeight: '44px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      <motion.button
+        type="button"
+        aria-label="Scroll to about section"
+        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, cursor: 'pointer', color: 'white', opacity: 0.7, minWidth: '44px', minHeight: '44px', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'transparent', border: 0 }}
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <ChevronDown size={32} />
-      </motion.div>
+        <ChevronDown size={32} aria-hidden="true" />
+      </motion.button>
     </section>
   );
 };
