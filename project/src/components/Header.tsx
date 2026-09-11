@@ -56,7 +56,9 @@ const Header: React.FC = () => {
       {/* Floating Scroll to Top - kept separate for utility */}
       <AnimatePresence>
         {isScrolled && (
-          <motion.div
+          <motion.button
+            type="button"
+            aria-label="Scroll to top"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
@@ -64,7 +66,7 @@ const Header: React.FC = () => {
             onClick={scrollToTop}
           >
             <ArrowUp size={24} />
-          </motion.div>
+          </motion.button>
         )}
       </AnimatePresence>
 
@@ -124,6 +126,7 @@ const Header: React.FC = () => {
           <div className="hidden md:block pl-2 border-l border-gray-200 dark:border-gray-700 shrink-0">
             <button
               onClick={toggleTheme}
+              aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
               className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-700 dark:text-white"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -134,12 +137,15 @@ const Header: React.FC = () => {
           <div className="md:hidden flex items-center gap-4">
             <button
               onClick={toggleTheme}
+              aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
               className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-700 dark:text-white"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
               className="text-gray-700 dark:text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

@@ -5,11 +5,11 @@ const Skills: React.FC = () => {
   const skills = [
     { name: 'Python', level: 70, category: 'Programming' },
     { name: 'Java Programming', level: 75, category: 'Programming' },
-    { name: 'C-Programming', level: 80, category: 'Programming' },
+    { name: 'C Programming', level: 80, category: 'Programming' },
     { name: 'TensorFlow', level: 85, category: 'AI/ML' },
     { name: 'Keras', level: 80, category: 'AI/ML' },
     { name: 'MongoDB', level: 75, category: 'Database' },
-    { name: 'MYSQL', level: 76, category: 'Database' },
+    { name: 'MySQL', level: 76, category: 'Database' },
     { name: 'Spring Boot', level: 70, category: 'Backend' },
     { name: 'React', level: 85, category: 'Frontend' },
     { name: 'OpenCV', level: 80, category: 'Computer Vision' },
@@ -27,14 +27,14 @@ const Skills: React.FC = () => {
   };
 
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: false, margin: '-100px' });
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
     <section id="skills" className="skills-section" ref={sectionRef}>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5)' }}
       >
@@ -53,7 +53,7 @@ const Skills: React.FC = () => {
               className="skill-category"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: catIndex * 0.1 }}
             >
               <h3 className="category-title">{category}</h3>
@@ -89,7 +89,7 @@ const Skills: React.FC = () => {
             className="summary-card"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
             whileHover={{ scale: 1.05 }}
           >

@@ -22,7 +22,7 @@ const Education: React.FC = () => {
     {
       date: '2022–2026',
       institution: 'Saveetha Engineering College',
-      description: 'Pursuing B.Tech in Artificial Intelligence and Data Science (CGPA: 9.05). Participated in Smart India Hackathon 2024, built projects using Python, TensorFlow & React. Member of Tech society club and technical event organizer.'
+      description: 'Pursuing B.Tech in Artificial Intelligence and Data Science (CGPA: 9.05). Participated in Smart India Hackathon 2024, built projects using Python, TensorFlow & React. Member of the technical society and organizer of technical events.'
     }
   ];
 
@@ -32,7 +32,7 @@ const Education: React.FC = () => {
         className="education-heading"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.5)' }}
       >
@@ -45,7 +45,7 @@ const Education: React.FC = () => {
             className="timeline-item"
             initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: '-50px' }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
           >
             <div className="timeline-dot"></div>

@@ -16,6 +16,7 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -30,8 +31,12 @@ const Contact: React.FC = () => {
 
     const { name, email, message } = formData;
 
-    if (!name.trim() || !email.trim() || !message.trim()) return;
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setErrorMessage('Please complete all fields before sending your message.');
+      return;
+    }
 
+    setErrorMessage('');
     setIsSubmitting(true);
 
     // Environment variables with fallback values
@@ -71,7 +76,7 @@ const Contact: React.FC = () => {
       if (import.meta.env.DEV) {
         console.error('FAILED...', error);
       }
-      alert(`Failed to send message: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      setErrorMessage('Your message could not be sent. Please try again or email me directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -92,7 +97,7 @@ const Contact: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -112,7 +117,7 @@ const Contact: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden md:block"
           >
@@ -147,7 +152,7 @@ const Contact: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <form onSubmit={handleSubmit} className="bg-white/80 dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.15),_0_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.2),_0_15px_30px_rgba(0,230,118,0.15)] transition-shadow duration-300 space-y-6 relative overflow-hidden">
@@ -181,12 +186,14 @@ const Contact: React.FC = () => {
               </AnimatePresence>
 
               <div className="space-y-1">
-                <label className={labelClasses}>Name</label>
+                <label htmlFor="contact-name" className={labelClasses}>Name</label>
                 <div className="relative">
                   <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400" size={20} />
                   <input
                     type="text"
+                    id="contact-name"
                     name="name"
+                    autoComplete="name"
                     value={formData.name}
                     onChange={handleInputChange}
                     required
@@ -197,12 +204,14 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="space-y-1">
-                <label className={labelClasses}>Email</label>
+                <label htmlFor="contact-email" className={labelClasses}>Email</label>
                 <div className="relative">
                   <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400" size={20} />
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
+                    autoComplete="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     required
@@ -213,10 +222,11 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="space-y-1">
-                <label className={labelClasses}>Message</label>
+                <label htmlFor="contact-message" className={labelClasses}>Message</label>
                 <div className="relative">
                   <MessageSquare className="absolute left-4 top-6 text-gray-500 dark:text-gray-400" size={20} />
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
@@ -227,6 +237,12 @@ const Contact: React.FC = () => {
                   />
                 </div>
               </div>
+
+              {errorMessage && (
+                <p role="alert" className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-400/30 dark:bg-red-950/30 dark:text-red-200">
+                  {errorMessage}
+                </p>
+              )}
 
               <motion.button
                 type="submit"

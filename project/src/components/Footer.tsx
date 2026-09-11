@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
 
         {/* Copyright */}
         <p style={{ fontSize: '0.85rem', opacity: 0.6, margin: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.3rem' }}>
-          &copy; 2025 Janarthanan V K — Made with <Heart size={14} style={{ color: 'var(--accent-color)' }} /> in Chennai
+          &copy; {new Date().getFullYear()} Janarthanan V K — Made with <Heart size={14} aria-hidden="true" style={{ color: 'var(--accent-color)' }} /> in Tamil Nadu, India
         </p>
       </div>
     </footer>
