@@ -48,7 +48,7 @@ const Contact: React.FC = () => {
       if (import.meta.env.DEV) {
         console.error('EmailJS keys are missing from environment variables');
       }
-      alert('Email configuration is missing. Please check .env file.');
+      setErrorMessage('Email configuration is unavailable. Please email me directly instead.');
       setIsSubmitting(false);
       return;
     }
