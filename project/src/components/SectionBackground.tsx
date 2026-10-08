@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence, type TargetAndTransition } from 'framer-motion';
 
 const sectionBackgrounds = [
   { id: 'hero', image: '/backgrounds/bg-hero-new.jpg', overlay: 'linear-gradient(135deg, rgba(0,77,64,0.4), rgba(0,176,155,0.25))' },
@@ -12,7 +12,7 @@ const sectionBackgrounds = [
 ];
 
 // Transition variants for different morphing effects
-const transitionVariants: Record<string, { initial: any; animate: any; exit: any }> = {
+const transitionVariants: Record<string, { initial: TargetAndTransition; animate: TargetAndTransition; exit: TargetAndTransition }> = {
   // Smooth scale + fade
   scaleIn: {
     initial: { opacity: 0, scale: 1.15 },

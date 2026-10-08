@@ -18,8 +18,8 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <img
-            src="/Janarthanan.jpg"
+            <img
+            src="/Janarthanan.webp"
             alt="Janarthanan V K"
             className="hero-main-image"
             fetchPriority="high"

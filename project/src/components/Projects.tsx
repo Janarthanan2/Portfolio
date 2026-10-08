@@ -75,7 +75,7 @@ const Projects: React.FC = () => {
                   </span>
                 ))}
               </div>
-
+              
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link" style={{ 
                   zIndex: 10, position: 'relative', display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
                   color: 'var(--accent-color)', textDecoration: 'none', fontWeight: 600
@@ -91,3 +91,4 @@ const Projects: React.FC = () => {
 };
 
 export default Projects;
+

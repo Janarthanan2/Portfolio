@@ -1,10 +1,9 @@
 "use client"
-
+ 
 import React from "react"
-import { cn } from "@/lib/utils"
-import { Sparkles, Zap, Star, Flame } from "lucide-react"
-
-
+import { Sparkles, Zap } from "lucide-react"
+ 
+ 
 /* ─── Variation 2: Neon Pulse ─── */
 export function NeonPulseButton({ children = "Neon Pulse" }: { children?: React.ReactNode }) {
   return (
@@ -20,7 +19,7 @@ export function NeonPulseButton({ children = "Neon Pulse" }: { children?: React.
     </button>
   )
 }
-
+ 
 /* ─── Variation 3: Electric Glow ─── */
 export function ElectricGlowButton({ children = "Electric Glow" }: { children?: React.ReactNode }) {
   return (
@@ -37,5 +36,6 @@ export function ElectricGlowButton({ children = "Electric Glow" }: { children?: 
     </button>
   )
 }
+
 
 

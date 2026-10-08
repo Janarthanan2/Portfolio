@@ -1,5 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  dx: number;
+  dy: number;
+}
+
 interface Props {
   colorTheme?: 'green' | 'white';
   isFixed?: boolean;
@@ -7,7 +15,7 @@ interface Props {
 
 const ParticleBackground: React.FC<Props> = ({ colorTheme = 'green', isFixed = true }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particlesRef = useRef<any[]>([]);
+  const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: -1000, y: -1000 });
 
   useEffect(() => {
@@ -42,7 +50,7 @@ const ParticleBackground: React.FC<Props> = ({ colorTheme = 'green', isFixed = t
         mouseRef.current.y = e.clientY - rect.top;
       }
     };
-    
+
     const handleMouseLeave = () => {
       mouseRef.current.x = -1000;
       mouseRef.current.y = -1000;
@@ -72,7 +80,7 @@ const ParticleBackground: React.FC<Props> = ({ colorTheme = 'green', isFixed = t
 
     const connectionDistance = isMobile ? 100 : 150;
     const mouseRadius = isMobile ? 0 : 180;
-    
+
     const rgb = colorTheme === 'white' ? '255, 255, 255' : '0, 200, 83';
 
     const animate = () => {
